@@ -1,0 +1,45 @@
+﻿a {
+    text-decoration: none;
+    color: #ffffff;
+}
+
+a:hover {
+    background-color: #000000;
+}
+
+#content{
+    width:500px;
+    height:890px;
+    float:left;
+    background-color:#ff00dc;
+    border-top-right-radius:20%;
+}
+
+#table{
+    width:400px;
+    height:100%;
+    float:left;    
+}
+
+#right{
+    width:600px;
+    height:490px;
+    float:right;
+    background-color:#ff00dc;
+    border-top-left-radius:20%;
+}
+
+h4{
+    font-family:cursive;
+    margin-left:50px;
+}
+
+ul li{
+    margin-bottom:20px;
+}
+
+#adv{
+    float:right;
+    position:relative;
+    bottom:491px;
+}

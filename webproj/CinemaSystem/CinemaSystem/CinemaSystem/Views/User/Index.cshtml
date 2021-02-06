@@ -1,0 +1,40 @@
+﻿@using CinemaSystem.Models.Entity
+@model List<UserInfo>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/MainLayout.cshtml";
+}
+<head>
+    <link href="~/css/UserIndex.css" rel="stylesheet" />
+</head>
+
+<body>
+
+    <h2>Üyelerimiz</h2>
+    <div id="content">
+        <table border="1" cellpadding="5" cellspacing="5" bordercolor="white" style="color:#ffffff;">
+            <tr>
+                <td>İsim</td>
+                <td>Kullanıcı Adı</td>
+                <td>Doğum Tarihi</td>
+                <td>Cinsiyet</td>
+                <td>Telefon Numarası</td>
+            </tr>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.realName_Surname</td>
+                    <td>@item.userName</td>
+                    <td>@item.DateOfBirth</td>
+                    <td>@item.Sex</td>
+                    <td>@item.phoneNumber</td>
+                </tr>
+            }
+        </table>
+
+        <div id="buttonLink">
+            <a href="/User/AddUser/">Üye Ol</a>
+        </div>
+    </div>    
+    
+</body>

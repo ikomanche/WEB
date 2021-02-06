@@ -1,0 +1,37 @@
+﻿@using CinemaSystem.Models.Entity
+@model List<Movies>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/MainLayout.cshtml";
+}
+
+<head>
+    <link href="~/css/MainIndex.css" rel="stylesheet" />
+</head>
+<body>
+    <h2>Filmler</h2>
+    <div class="IndexContent">
+        <table border="1" cellpadding="5" cellspacing="5" bordercolor="white" style="color:#ffffff;">
+
+            <tr>
+                <td>Afiş</td>
+                <td>Film</td>
+                <td>Tür</td>                
+                <td>Dil</td>
+                <td>Detay</td>
+                <td>Oyuncular</td>                
+            </tr>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td><img src="~/img/@item.img" width="375" height="200" /></td>
+                    <td>@item.title</td>
+                    <td>@item.genre</td>                    
+                    <td>@item.lang</td>                    
+                    <td><a href="~/MovieDetail/Index/@item.id">Detay</a></td>                    
+                    <td>@Html.ActionLink("Oyuncu Kadrosu", "Index", "Artist", new { id = item.id }, null)</td>                    
+                </tr>
+            }
+        </table>
+    </div>
+</body>

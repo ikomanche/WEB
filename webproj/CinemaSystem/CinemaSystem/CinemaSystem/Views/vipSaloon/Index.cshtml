@@ -1,0 +1,48 @@
+﻿@using CinemaSystem.Models.Entity
+@model List<Saloon>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/MainLayout.cshtml";
+}
+<head>
+    <link href="~/css/vipSaloonIndex.css" rel="stylesheet" />
+</head>
+
+<h2>VIP Salonlar</h2>
+<div id="table1">
+
+    <table width="400" border="0" cellpadding="50" cellspacing="5">
+        <tr>
+            <td>Kapasite</td>
+            <td>Çift Kişilik Yatak Sayısı</td>
+            <td>Tek Kişilik Yatak Sayısı</td>
+            <td>Titreşimli Koltuk Sayısı</td>
+            <td>Atıştırmalık</td>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Capacity</td>
+                <td>@item.Double_Bed</td>
+                <td>@item.Single_Bed</td>
+                <td>@item.Vibrating_Seat</td>
+                <td>@item.Snack</td>
+            </tr>
+        }
+    </table>
+</div>
+<div id="image1">
+    <img src="~/img/doubleBed.jpg" width="400" height="150" position="relative" right="50px" />
+</div>
+<div id="image2">
+    <img src="~/img/SingleBed.jpg" width="400" height="150" />
+</div>
+<div id="image3">
+    <img src="~/img/VibratingSeats.jpg" width="400" height="150" />
+</div>
+<div id="image4">
+    <img src="~/img/goldClass.jpg" width="400" height="150" />
+</div>
+<div id="image5">
+    <img src="~/img/skybox.jpg" width="400" height="150" />
+</div>

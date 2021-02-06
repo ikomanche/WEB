@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CinemaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Cinemas">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="title" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="city" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="address_" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Saloon" Relationship="Self.FK__Saloon__CinemaID__1EA48E88" FromRole="Cinemas" ToRole="Saloon" />
+  </EntityType>
+  <EntityType Name="Movies">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="title" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="duration" Type="Time" Nullable="false" Precision="7" />
+    <Property Name="lang" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="caption" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="genre" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="vision_date" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Director" Type="Int32" Nullable="false" />
+    <Property Name="img" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="UserInfo">
+    <Key>
+      <PropertyRef Name="userID" />
+    </Key>
+    <Property Name="userID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="userName" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="passwd" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="realName_Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="phoneNumber" Type="Decimal" Precision="10" Scale="0" />
+    <Property Name="Sex" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="DateOfBirth" Type="DateTime" Nullable="false" Precision="0" />
+  </EntityType>
+  <EntityType Name="Saloon">
+    <Key>
+      <PropertyRef Name="Room_id" />
+    </Key>
+    <Property Name="Room_id" Type="Int32" Nullable="false" />
+    <Property Name="Capacity" Type="Int32" Nullable="false" />
+    <Property Name="Double_Bed" Type="Int32" />
+    <Property Name="Single_Bed" Type="Int32" />
+    <Property Name="Vibrating_Seat" Type="Int32" />
+    <Property Name="Snack" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Sound_System" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Screen_Size_inch_" Type="Decimal" Precision="4" Scale="1" Nullable="false" />
+    <Property Name="CinemaID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Cinemas" Relationship="Self.FK__Saloon__CinemaID__1EA48E88" FromRole="Saloon" ToRole="Cinemas" />
+  </EntityType>
+  <Association Name="FK__Saloon__CinemaID__1EA48E88">
+    <End Role="Cinemas" Type="Self.Cinemas" Multiplicity="1" />
+    <End Role="Saloon" Type="Self.Saloon" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cinemas">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Saloon">
+        <PropertyRef Name="CinemaID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="CinemaEntities2" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Cinemas" EntityType="Self.Cinemas" />
+    <EntitySet Name="Movies" EntityType="Self.Movies" />
+    <EntitySet Name="UserInfo" EntityType="Self.UserInfo" />
+    <EntitySet Name="Saloon" EntityType="Self.Saloon" />
+    <AssociationSet Name="FK__Saloon__CinemaID__1EA48E88" Association="Self.FK__Saloon__CinemaID__1EA48E88">
+      <End Role="Cinemas" EntitySet="Cinemas" />
+      <End Role="Saloon" EntitySet="Saloon" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

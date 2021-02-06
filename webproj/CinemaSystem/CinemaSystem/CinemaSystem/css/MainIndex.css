@@ -1,0 +1,35 @@
+﻿body{
+    background-color:black;
+}
+
+h2{
+    font-family:cursive;
+    color:#ff00dc;
+}
+
+.IndexContent{
+    width:1200px;
+    height:auto;
+    background-color:#ff00dc;   
+    border-top-right-radius:20px;
+}
+
+.IndexContent ul{
+    list-style:none;    
+}
+
+.IndexContent ul li{
+    margin-left:10px;
+    float:left;
+    
+}
+
+a:link, a:visited {    
+    color: white;    
+    text-align: center;
+    text-decoration: none;    
+}
+
+a:hover, a:active {
+    background-color: black;
+}

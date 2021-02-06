@@ -1,0 +1,64 @@
+﻿@model CinemaSystem.Models.Entity.Movies
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/MainLayout.cshtml";
+}
+<head>
+    <link href="~/css/MovieDetailIndex.css" rel="stylesheet" />
+</head>
+
+<body>
+    <h2>detay</h2>
+    @using (Html.BeginForm("Index", "MovieDetail", FormMethod.Post))
+    {
+        <div id="banner">
+            <img src="~/img/@Html.ValueFor(m => m.img)"width="298"height="598"/>
+        </div>
+        <div id="info">
+            <div id="col">
+                <label>FilmID</label>
+                @Html.TextBoxFor(m => m.id,new { @class = "value" })
+            </div>
+
+            <div id="col">
+                <label>Film</label>
+                @Html.TextBoxFor(m => m.title, new { @class = "value" })
+            </div>            
+
+            <div id="col">
+                <label>Süre</label>
+                @Html.TextBoxFor(m => m.duration, new { @class = "value" })
+            </div>
+            
+            <div id="col">
+                <label>Dil</label>
+                @Html.TextBoxFor(m => m.lang, new { @class = "value" })
+            </div>
+            
+            <div id="col">
+                <label>Altyazı</label>
+                @Html.TextBoxFor(m => m.caption, new { @class = "value" })
+            </div>
+            
+            <div id="col">
+                <label>Tür</label>
+                @Html.TextBoxFor(m => m.genre, new { @class = "value" })
+            </div>
+            
+            <div id="col">
+                <label>Vizyon Tarihi</label>
+                @Html.TextBoxFor(m => m.vision_date, new { @class = "value" })
+            </div>
+            
+            <div id="col">
+                <label>Yönetmen</label>
+                @Html.TextBoxFor(m => m.Director, new { @class = "value" })
+            </div>
+            
+        </div> 
+        <div id="adv">
+            <img src="~/img/popcornADV.jpg" width="280"height="600"/>
+        </div>
+    }
+        
+</body>

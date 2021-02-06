@@ -1,0 +1,16 @@
+﻿#content{
+    width:1000px;
+    height:700px;
+    float:left;
+    background-color:#ff00dc;
+}
+
+#buttonLink{
+    width:auto;
+    height:auto;
+    float:left;
+    margin-top:5px;
+    margin-left:10px;
+    border:1px solid #000000;
+    background-color:#ffffff;
+}

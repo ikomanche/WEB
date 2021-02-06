@@ -1,0 +1,239 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="CinemaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Cinemas">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="title" Type="nvarchar" MaxLength="25" Nullable="false" />
+          <Property Name="city" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="address_" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Movies">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="title" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="duration" Type="time" Precision="7" Nullable="false" />
+          <Property Name="lang" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="caption" Type="nvarchar" MaxLength="15" />
+          <Property Name="genre" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="vision_date" Type="date" Nullable="false" />
+          <Property Name="Director" Type="int" Nullable="false" />
+          <Property Name="img" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="UserInfo">
+          <Key>
+            <PropertyRef Name="userID" />
+          </Key>
+          <Property Name="userID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="userName" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="passwd" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="realName&amp;Surname" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="phoneNumber" Type="decimal" Precision="10" Scale="0" />
+          <Property Name="Sex" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="DateOfBirth" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Saloon">
+          <Key>
+            <PropertyRef Name="Room_id" />
+          </Key>
+          <Property Name="Room_id" Type="int" Nullable="false" />
+          <Property Name="Capacity" Type="int" Nullable="false" />
+          <Property Name="Double Bed" Type="int" />
+          <Property Name="Single Bed" Type="int" />
+          <Property Name="Vibrating Seat" Type="int" />
+          <Property Name="Snack" Type="nvarchar" MaxLength="25" Nullable="false" />
+          <Property Name="Sound System" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Screen Size(inch)" Type="decimal" Precision="4" Scale="1" Nullable="false" />
+          <Property Name="CinemaID" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Saloon__CinemaID__1EA48E88">
+          <End Role="Cinemas" Type="Self.Cinemas" Multiplicity="1" />
+          <End Role="Saloon" Type="Self.Saloon" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cinemas">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Saloon">
+              <PropertyRef Name="CinemaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CinemaModelStoreContainer">
+          <EntitySet Name="Cinemas" EntityType="Self.Cinemas" Schema="reg" store:Type="Tables" />
+          <EntitySet Name="Movies" EntityType="Self.Movies" Schema="reg" store:Type="Tables" />
+          <EntitySet Name="UserInfo" EntityType="Self.UserInfo" Schema="reg" store:Type="Tables" />
+          <EntitySet Name="Saloon" EntityType="Self.Saloon" Schema="vip" store:Type="Tables" />
+          <AssociationSet Name="FK__Saloon__CinemaID__1EA48E88" Association="Self.FK__Saloon__CinemaID__1EA48E88">
+            <End Role="Cinemas" EntitySet="Cinemas" />
+            <End Role="Saloon" EntitySet="Saloon" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CinemaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Cinemas">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="title" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="city" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="address_" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Saloon" Relationship="Self.FK__Saloon__CinemaID__1EA48E88" FromRole="Cinemas" ToRole="Saloon" />
+        </EntityType>
+        <EntityType Name="Movies">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="title" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="duration" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="lang" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="caption" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="genre" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="vision_date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Director" Type="Int32" Nullable="false" />
+          <Property Name="img" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="UserInfo">
+          <Key>
+            <PropertyRef Name="userID" />
+          </Key>
+          <Property Name="userID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="userName" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="passwd" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="realName_Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="phoneNumber" Type="Decimal" Precision="10" Scale="0" />
+          <Property Name="Sex" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="DateOfBirth" Type="DateTime" Nullable="false" Precision="0" />
+        </EntityType>
+        <EntityType Name="Saloon">
+          <Key>
+            <PropertyRef Name="Room_id" />
+          </Key>
+          <Property Name="Room_id" Type="Int32" Nullable="false" />
+          <Property Name="Capacity" Type="Int32" Nullable="false" />
+          <Property Name="Double_Bed" Type="Int32" />
+          <Property Name="Single_Bed" Type="Int32" />
+          <Property Name="Vibrating_Seat" Type="Int32" />
+          <Property Name="Snack" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Sound_System" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Screen_Size_inch_" Type="Decimal" Precision="4" Scale="1" Nullable="false" />
+          <Property Name="CinemaID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Cinemas" Relationship="Self.FK__Saloon__CinemaID__1EA48E88" FromRole="Saloon" ToRole="Cinemas" />
+        </EntityType>
+        <Association Name="FK__Saloon__CinemaID__1EA48E88">
+          <End Role="Cinemas" Type="Self.Cinemas" Multiplicity="1" />
+          <End Role="Saloon" Type="Self.Saloon" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cinemas">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Saloon">
+              <PropertyRef Name="CinemaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CinemaEntities2" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Cinemas" EntityType="Self.Cinemas" />
+          <EntitySet Name="Movies" EntityType="Self.Movies" />
+          <EntitySet Name="UserInfo" EntityType="Self.UserInfo" />
+          <EntitySet Name="Saloon" EntityType="Self.Saloon" />
+          <AssociationSet Name="FK__Saloon__CinemaID__1EA48E88" Association="Self.FK__Saloon__CinemaID__1EA48E88">
+            <End Role="Cinemas" EntitySet="Cinemas" />
+            <End Role="Saloon" EntitySet="Saloon" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CinemaModelStoreContainer" CdmEntityContainer="CinemaEntities2">
+          <EntitySetMapping Name="Cinemas">
+            <EntityTypeMapping TypeName="CinemaModel.Cinemas">
+              <MappingFragment StoreEntitySet="Cinemas">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="address_" ColumnName="address_" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Movies">
+            <EntityTypeMapping TypeName="CinemaModel.Movies">
+              <MappingFragment StoreEntitySet="Movies">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="duration" ColumnName="duration" />
+                <ScalarProperty Name="lang" ColumnName="lang" />
+                <ScalarProperty Name="caption" ColumnName="caption" />
+                <ScalarProperty Name="genre" ColumnName="genre" />
+                <ScalarProperty Name="vision_date" ColumnName="vision_date" />
+                <ScalarProperty Name="Director" ColumnName="Director" />
+                <ScalarProperty Name="img" ColumnName="img" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserInfo">
+            <EntityTypeMapping TypeName="CinemaModel.UserInfo">
+              <MappingFragment StoreEntitySet="UserInfo">
+                <ScalarProperty Name="userID" ColumnName="userID" />
+                <ScalarProperty Name="userName" ColumnName="userName" />
+                <ScalarProperty Name="passwd" ColumnName="passwd" />
+                <ScalarProperty Name="realName_Surname" ColumnName="realName&amp;Surname" />
+                <ScalarProperty Name="phoneNumber" ColumnName="phoneNumber" />
+                <ScalarProperty Name="Sex" ColumnName="Sex" />
+                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Saloon">
+            <EntityTypeMapping TypeName="CinemaModel.Saloon">
+              <MappingFragment StoreEntitySet="Saloon">
+                <ScalarProperty Name="Room_id" ColumnName="Room_id" />
+                <ScalarProperty Name="Capacity" ColumnName="Capacity" />
+                <ScalarProperty Name="Double_Bed" ColumnName="Double Bed" />
+                <ScalarProperty Name="Single_Bed" ColumnName="Single Bed" />
+                <ScalarProperty Name="Vibrating_Seat" ColumnName="Vibrating Seat" />
+                <ScalarProperty Name="Snack" ColumnName="Snack" />
+                <ScalarProperty Name="Sound_System" ColumnName="Sound System" />
+                <ScalarProperty Name="Screen_Size_inch_" ColumnName="Screen Size(inch)" />
+                <ScalarProperty Name="CinemaID" ColumnName="CinemaID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

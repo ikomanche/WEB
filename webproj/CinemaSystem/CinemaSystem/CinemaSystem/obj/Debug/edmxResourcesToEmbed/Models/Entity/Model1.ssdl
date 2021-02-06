@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CinemaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Cinemas">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="title" Type="nvarchar" MaxLength="25" Nullable="false" />
+    <Property Name="city" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="address_" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Movies">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="title" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="duration" Type="time" Precision="7" Nullable="false" />
+    <Property Name="lang" Type="nvarchar" MaxLength="15" Nullable="false" />
+    <Property Name="caption" Type="nvarchar" MaxLength="15" />
+    <Property Name="genre" Type="nvarchar" MaxLength="15" Nullable="false" />
+    <Property Name="vision_date" Type="date" Nullable="false" />
+    <Property Name="Director" Type="int" Nullable="false" />
+    <Property Name="img" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="UserInfo">
+    <Key>
+      <PropertyRef Name="userID" />
+    </Key>
+    <Property Name="userID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="userName" Type="nvarchar" MaxLength="15" Nullable="false" />
+    <Property Name="passwd" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="realName&amp;Surname" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="phoneNumber" Type="decimal" Precision="10" Scale="0" />
+    <Property Name="Sex" Type="char" MaxLength="1" Nullable="false" />
+    <Property Name="DateOfBirth" Type="date" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Saloon">
+    <Key>
+      <PropertyRef Name="Room_id" />
+    </Key>
+    <Property Name="Room_id" Type="int" Nullable="false" />
+    <Property Name="Capacity" Type="int" Nullable="false" />
+    <Property Name="Double Bed" Type="int" />
+    <Property Name="Single Bed" Type="int" />
+    <Property Name="Vibrating Seat" Type="int" />
+    <Property Name="Snack" Type="nvarchar" MaxLength="25" Nullable="false" />
+    <Property Name="Sound System" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="Screen Size(inch)" Type="decimal" Precision="4" Scale="1" Nullable="false" />
+    <Property Name="CinemaID" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__Saloon__CinemaID__1EA48E88">
+    <End Role="Cinemas" Type="Self.Cinemas" Multiplicity="1" />
+    <End Role="Saloon" Type="Self.Saloon" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cinemas">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Saloon">
+        <PropertyRef Name="CinemaID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="CinemaModelStoreContainer">
+    <EntitySet Name="Cinemas" EntityType="Self.Cinemas" Schema="reg" store:Type="Tables" />
+    <EntitySet Name="Movies" EntityType="Self.Movies" Schema="reg" store:Type="Tables" />
+    <EntitySet Name="UserInfo" EntityType="Self.UserInfo" Schema="reg" store:Type="Tables" />
+    <EntitySet Name="Saloon" EntityType="Self.Saloon" Schema="vip" store:Type="Tables" />
+    <AssociationSet Name="FK__Saloon__CinemaID__1EA48E88" Association="Self.FK__Saloon__CinemaID__1EA48E88">
+      <End Role="Cinemas" EntitySet="Cinemas" />
+      <End Role="Saloon" EntitySet="Saloon" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

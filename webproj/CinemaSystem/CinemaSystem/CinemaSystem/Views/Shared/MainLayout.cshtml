@@ -1,0 +1,39 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Cinema</title>
+    <link href="~/css/StyleSheet1.css" rel="stylesheet" />
+
+</head>
+<body>   
+    <div class="center">
+        <div class="LayoutField">
+            <header>
+                <div id="logo">
+                    <a href="/Main/Index"><img src="~/img/logo.jpg" width="198" height="48" /></a>
+                </div>
+                <div id="menu">
+                    <ul>
+                        <li><a href="/Cinema/Index">Sinema</a></li>
+                        <li><a href="/Genre/Index">Türler</a></li>
+                        <li><a href="/vipSaloon/Index">Ayrıcalıklı Salonlar</a></li>
+                        <li><a href="/User/Index">Üyeler</a></li>
+                    </ul>
+                </div>
+            </header>
+        </div>
+
+        <div class="content">
+            @RenderBody()
+        </div>
+        
+    </div>
+</body>
+</html>

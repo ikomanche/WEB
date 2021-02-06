@@ -1,0 +1,74 @@
+﻿@using CinemaSystem.Models.Entity
+@model List<Movies>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/MainLayout.cshtml";
+}
+<head>
+    <link href="~/css/GenreIndex.css" rel="stylesheet" />
+</head>
+
+<body>
+    <h2>Türler</h2>
+    <div id="content">
+        <div id="table">
+            <table width="400" border="1" cellpadding="50" cellspacing="5" bordercolor="pink" style="color:#ffffff">
+                <tr>
+                    <td>Aksiyon</td>
+                    <td>@Html.ActionLink("Listele", "Genres", "Genre", new {genre = "Aksiyon"}, null)</td>
+
+                </tr>
+                <tr>
+                    <td>Aşk</td>
+                    <td>@Html.ActionLink("Listele", "Genres", "Genre", new { genre = "Aşk" }, null)</td>
+                </tr>
+                <tr>
+                    <td>Animasyon</td>
+                    <td>@Html.ActionLink("Listele", "Genres", "Genre", new { genre = "Animasyon" }, null)</td>
+                </tr>
+                <tr>
+                    <td>Dram</td>
+                    <td>@Html.ActionLink("Listele", "Genres", "Genre", new { genre = "Dram" }, null)</td>
+                </tr>
+                <tr>
+                    <td>Korku</td>
+                    <td>@Html.ActionLink("Listele", "Genres", "Genre", new { genre = "Korku" }, null)</td>
+                </tr>
+                <tr>
+                    <td>Komedi</td>
+                    <td>@Html.ActionLink("Listele", "Genres", "Genre", new { genre = "Komedi" }, null)</td>
+                </tr>
+                <tr>
+                    <td>Suç</td>
+                    <td>@Html.ActionLink("Listele", "Genres", "Genre", new { genre = "Suç" }, null)</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div id="right">
+        <h4>
+            En Çok Tercih Edilen 5 Film
+        </h4>
+        <ul>
+            <li>Joker</li>
+            <li>7. Koğuştaki Mucize</li>
+            <li>Cinayet Süsü</li>
+            <li>Recep İvedik 6</li>
+            <li>Karakomik Filmler</li>
+        </ul>
+
+        <h4>En Yüksek Puan Alan 5 Film</h4>
+        <ul>
+            <li>7. Koğuştaki Mucize</li>
+            <li>Joker</li>
+            <li>Terminatör: Kara Kader</li>
+            <li>Asfaltın Kralları</li>
+            <li>Cinayet Süsü</li>
+        </ul>
+
+        <div id="adv">
+            <img src="~/img/cola.jpg" width="250" height="490" />
+        </div>
+
+    </div>
+</body>

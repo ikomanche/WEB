@@ -1,0 +1,21 @@
+﻿@using CinemaSystem.Models.Entity
+@model List<Cinemas>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/MainLayout.cshtml";
+}
+
+<body>
+    <h2>Sinemalar</h2>
+
+    <table width="400" border="1" cellpadding="5" cellspacing="5" bordercolor="pink">
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.title</td>
+                <td>@item.city</td>
+                <td>@item.address_</td>
+            </tr>
+        }
+    </table>
+</body>

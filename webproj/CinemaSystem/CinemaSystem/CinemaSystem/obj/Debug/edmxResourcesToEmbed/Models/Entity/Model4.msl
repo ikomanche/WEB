@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="CinemaModel3StoreContainer" CdmEntityContainer="CinemaEntities6">
+    <EntitySetMapping Name="Artist">
+      <EntityTypeMapping TypeName="CinemaModel3.Artist">
+        <MappingFragment StoreEntitySet="Artist">
+          <ScalarProperty Name="ssn" ColumnName="ssn" />
+          <ScalarProperty Name="age" ColumnName="age" />
+          <ScalarProperty Name="firstName" ColumnName="firstName" />
+          <ScalarProperty Name="lastName" ColumnName="lastName" />
+          <ScalarProperty Name="Movie" ColumnName="Movie" />
+          <ScalarProperty Name="salary" ColumnName="salary" />
+          <ScalarProperty Name="img" ColumnName="img" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

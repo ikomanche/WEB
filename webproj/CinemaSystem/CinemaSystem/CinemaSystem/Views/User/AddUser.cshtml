@@ -1,0 +1,34 @@
+﻿
+@{
+    ViewBag.Title = "AddUser";
+    Layout = "~/Views/Shared/MainLayout.cshtml";
+}
+<head>
+    <link href="~/css/UserAddUser.css" rel="stylesheet" />
+</head>
+<body>
+    <h2>AddUser</h2>
+
+    <form method="post">
+        <label>Kullanıcı Adı:</label>
+        <input type="text" name="userName" />
+
+        <label>Şifre:</label>
+        <input type="text" name="passwd" />
+
+        <label>Adı ve Soyadı:</label>
+        <input type="text" name="realName&Surname" />
+
+        <label>Telefon Numarası:</label>
+        <input type="text" name="phoneNumber" />
+
+        <label>Cinsiyet(M/F)</label>
+        <input type="text" name="Sex" />
+
+        <label>Doğum Tarihi</label>
+        <input type="text" name="DateOfBirth" />
+
+        <button class="btn btn-info">Kaydı Tamamla</button>
+    </form>
+</body>
+

@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CinemaModel2.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Movies">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="title" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="duration" Type="time" Precision="7" Nullable="false" />
+    <Property Name="lang" Type="nvarchar" MaxLength="15" Nullable="false" />
+    <Property Name="caption" Type="nvarchar" MaxLength="15" />
+    <Property Name="genre" Type="nvarchar" MaxLength="15" Nullable="false" />
+    <Property Name="vision_date" Type="date" Nullable="false" />
+    <Property Name="Director" Type="int" Nullable="false" />
+    <Property Name="img" Type="nvarchar(max)" />
+    <Property Name="idForWeb" Type="int" />
+  </EntityType>
+  <EntityContainer Name="CinemaModel2StoreContainer">
+    <EntitySet Name="Movies" EntityType="Self.Movies" Schema="reg" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

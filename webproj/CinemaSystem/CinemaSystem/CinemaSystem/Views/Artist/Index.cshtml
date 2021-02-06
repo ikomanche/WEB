@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/MainLayout.cshtml";
+}
+
+<head>
+    <link href="~/css/ArtistIndex.css" rel="stylesheet" />
+</head>
+<body>
+    <h2>Artist</h2>
+    <div class="IndexContent">
+        <table border="1" cellpadding="5" cellspacing="5" bordercolor="white" style="color:#ffffff;">
+
+            <tr>
+                <td>Resim</td>                
+                <td>Oyuncu</td>
+                <td>Yaş</td>                
+            </tr>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td><img src="~/img/@item.img" width="375" height="200" /></td>
+                    <td>@item.firstName @item.lastName</td>                    
+                    <td>@item.age</td>                    
+                </tr>
+            }
+        </table>
+    </div>
+</body>
